@@ -6,21 +6,18 @@ describe("Login Page Test Cases", () => {
   });
 
   it("Contains Email and Password Input & Login Button", () => {
-    // NOTE: Check Email
     const email = cy.get("input[name='email']");
 
     email.should("be.visible");
     email.should("have.attr", "type", "email");
     email.should("have.attr", "placeholder", "Email Address");
 
-    // NOTE: Check Password
     const password = cy.get("input[name='password']");
 
     password.should("be.visible");
     password.should("have.attr", "type", "password");
     password.should("have.attr", "placeholder", "Password");
 
-    // NOTE: Check Button
     const button = cy.get("button");
 
     button.should("be.visible");
@@ -67,5 +64,7 @@ describe("Login Page Test Cases", () => {
     cy.on("window:alert", (text) => {
       expect(text).to.contains("welcome");
     });
+
+    cy.url().should("eq", "http://localhost:3000/dashboard");
   });
 });
